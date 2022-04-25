@@ -6,6 +6,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
+import FlexDirection from './src/components/Learn_StyleComponent/FlexBox/FlexDirection';
 // import {CoreComponents} from './src/components/CoreComponents';
 // import ImgComponent from './src/components/CoreComponents/ImgComponent';
 // import Props from './src/components/CoreComponents/Props';
@@ -14,8 +15,8 @@ import {
 // import ScroolView from './src/components/CoreComponents/ScrollViews';
 // import FlatListBasics from './src/components/CoreComponents/FlatListBasics';
 // import StyleText from './src/components/Learn_StyleComponent/StyleText';
-// import FixedDimensionsBasics from './src/components/Learn_StyleComponent/FixedDimensionsBasics';
-// import FlexLayout from './src/components/Learn_StyleComponent/FlexLayout';
+// import FixedDimensionsBasics from './src/components/Learn_StyleComponent/FlexBox/FixedDimensionsBasics';
+// import FlexLayout from './src/components/Learn_StyleComponent/FlexBox/FlexLayout';
 
 const App = () => {
   return (
@@ -36,6 +37,7 @@ const App = () => {
           {/* Flex box React native */}
           {/* <FixedDimensionsBasics /> */}
           {/* <FlexLayout /> */}
+          {/* <FlexDirection /> */}
         </View>
       </SafeAreaView>
       <View style={styles.footer} />

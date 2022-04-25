@@ -1,9 +1,26 @@
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 
-const FlexLayout = () => {
-  const [flexDirection, setflexDirection] = useState('column');
+const data = {
+  column: [
+    {
+      label: 'ltr',
+      value: {
+        alignItems: 'flex-start',
+      },
+    },
+    {
+      label: 'rtl',
+      value: {
+        alignItems: 'flex-end',
+      },
+    },
+  ],
+  row: [],
+};
 
+const FlexDirection = () => {
+  const [direction, setDirection] = useState(data.column[0]);
   const PreviewLayout = ({
     label,
     children,
@@ -15,37 +32,35 @@ const FlexLayout = () => {
       <View style={{padding: 10, flex: 1}}>
         <Text style={styles.label}>{label}</Text>
         <View style={styles.row}>
-          {values.map(value => (
+          {values.map((value, index) => (
             <TouchableOpacity
-              key={value}
+              key={index}
               onPress={() => setSelectedValue(value)}
               style={[
                 styles.button,
-                selectedValue === value && styles.selected,
+                selectedValue.label === value.label && styles.selected,
               ]}>
               <Text
                 style={[
                   styles.buttonLabel,
-                  selectedValue === value && styles.selectedLabel,
+                  selectedValue.label === value.label && styles.selectedLabel,
                 ]}>
-                {value}
+                {value.label}
               </Text>
             </TouchableOpacity>
           ))}
         </View>
-        <View style={[styles.container, {[label]: selectedValue}]}>
-          {children}
-        </View>
+        <View style={[styles.container, selectedValue.value]}>{children}</View>
       </View>
     );
   };
-
+  console.log('column', data.column);
   return (
     <PreviewLayout
-      label="flexDirection"
-      values={['column', 'row', 'row-reverse', 'column-reverse']}
-      selectedValue={flexDirection}
-      setSelectedValue={setflexDirection}>
+      label="direction"
+      selectedValue={direction}
+      values={data.column}
+      setSelectedValue={setDirection}>
       <View style={[styles.box, {backgroundColor: 'powderblue'}]} />
       <View style={[styles.box, {backgroundColor: 'skyblue'}]} />
       <View style={[styles.box, {backgroundColor: 'steelblue'}]} />
@@ -53,7 +68,7 @@ const FlexLayout = () => {
   );
 };
 
-export default FlexLayout;
+export default FlexDirection;
 
 const styles = StyleSheet.create({
   container: {
